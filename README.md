@@ -66,7 +66,9 @@ For reviewers who want the packaged Logitech plugin directly, the repository alr
 
 - [`plugin/logitech-plugin/dist/Cursivis.lplug4`](./plugin/logitech-plugin/dist/Cursivis.lplug4)
 
-The packaged `.lplug4` file is included for direct review and distribution. On a clean machine, the supported install flow is the scripted plugin install in Step 6 below, because it also verifies the package against the local Logi Plugin Service environment.
+The packaged `.lplug4` file is included for direct review and distribution. It is the verified package built from the current repository state. On a clean machine, the supported install flow is the scripted plugin install in Step 6 below, because it also verifies the package against the local Logi Plugin Service environment.
+
+For the smoothest review experience, keep the full repository alongside the package. The Logitech plugin is only one part of the system, and the browser extension plus local runtime are also required for the full live workflow.
 
 ## Workflow At A Glance
 
@@ -412,6 +414,14 @@ If you are reviewing the packaged plugin on another Windows machine, keep these 
 - the local runtime started with `scripts/run-demo.ps1`
 - the MX trigger hotkey mapped to `Ctrl + Alt + Space`
 
+Fastest supported setup on another Windows machine:
+
+1. Clone or download the full repository.
+2. Start the Cursivis runtime with `scripts/run-demo.ps1`.
+3. Load the Chromium extension from `desktop/browser-extension-chromium`.
+4. Install the included `.lplug4` package into Logi Plugin Service.
+5. Reopen Logi Options+ once, then configure the trigger hotkey and Actions Ring layout.
+
 From the repo root:
 
 ```powershell
@@ -426,6 +436,12 @@ This will:
 - install it into Logi Plugin Service
 
 If Logi Options+ was already open, close and reopen it once after installation.
+
+If you already have Logitech tooling installed and only want to install the packaged artifact directly, you can also run:
+
+```powershell
+& "$env:USERPROFILE\.dotnet\tools\logiplugintool.exe" install ".\plugin\logitech-plugin\dist\Cursivis.lplug4"
+```
 
 ### 7. Configure Actions Ring
 

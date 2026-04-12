@@ -77,6 +77,14 @@ This workflow:
 - verifies the package with `LogiPluginTool`
 - prints the plugin log path for quick inspection
 
+Direct package-only install path:
+
+```powershell
+& "$env:USERPROFILE\.dotnet\tools\logiplugintool.exe" install ".\plugin\logitech-plugin\dist\Cursivis.lplug4"
+```
+
+Use that direct install path only after the rest of the local stack is ready, because the plugin is expected to work together with the companion runtime, browser extension, and Logitech control mapping.
+
 Prerequisites:
 
 - Logi Options+ installed
