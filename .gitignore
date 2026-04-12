@@ -1,0 +1,18 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# .NET build artifacts
+bin/
+obj/
+
+# Browser profile data
+desktop/browser-action-agent/data/browser-profile/
+
+# Environment files
+.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db
