@@ -2,6 +2,9 @@
   <title id="title">Cursivis Architecture Diagram</title>
   <desc id="desc">High-level architecture of the Cursivis multimodal cursor-native agent system.</desc>
   <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#0f1b2b" stroke-width="1"/>
+    </pattern>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#020617"/>
       <stop offset="100%" stop-color="#000000"/>
@@ -27,6 +30,7 @@
       .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
       .body { font: 15px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
       .small { font: 14px 'Segoe UI', Arial, sans-serif; fill: #7dd3fc; }
+      .callout { font: 12px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; letter-spacing: 0.4px; }
       .box { fill: url(#panel); stroke: #1e3a5f; stroke-width: 2; rx: 24; ry: 24; filter: url(#shadow); }
       .pill { fill: #09101b; stroke: #24415f; stroke-width: 1.5; rx: 999; ry: 999; }
       .line { stroke: #67e8f9; stroke-width: 4; fill: none; marker-end: url(#arrow); }
@@ -35,10 +39,11 @@
   </defs>
 
   <rect width="1600" height="920" fill="url(#bg)"/>
-  <rect x="34" y="30" width="1532" height="860" rx="32" ry="32" fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.55"/>
+  <rect width="1600" height="920" fill="url(#grid)" opacity="0.23"/>
+  <rect x="34" y="30" width="1532" height="860" rx="32" ry="32" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.35"/>
 
   <text x="70" y="88" class="title">Cursivis Architecture</text>
-  <text x="70" y="122" class="subtitle">Selection = Context, Trigger = Intent, Cursivis = Action</text>
+  <text x="70" y="122" class="subtitle">Local-first cursor workflow stack for Logitech-triggered multimodal action and browser execution</text>
 
   <rect x="70" y="165" width="330" height="250" class="box"/>
   <text x="100" y="208" class="section">Input Layer</text>
@@ -99,6 +104,8 @@
   <path d="M840 505 C840 535 820 535 820 555" class="line-soft"/>
   <path d="M670 390 C440 520 360 555 320 555" class="line-soft"/>
   <path d="M1030 390 C990 520 950 555 900 555" class="line-soft"/>
+
+  <text x="70" y="854" class="callout">Data flow: Actions SDK events and local IPC -> HTTP/WS multimodal requests -> structured browser plans -> live current-tab execution or managed fallback automation</text>
 
   <rect x="1290" y="76" width="214" height="36" rx="18" ry="18" fill="#050b14" stroke="#1d4f73" stroke-width="1.5"/>
   <circle cx="1317" cy="94" r="6" fill="#67e8f9"/>
