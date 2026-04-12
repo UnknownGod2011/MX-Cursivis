@@ -2,8 +2,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$ProjectId,
     [string]$Region = "us-central1",
-    [string]$ServiceName = "cursivis-gemini-agent",
-    [string]$ImageName = "cursivis-gemini-agent",
+    [string]$ServiceName = "cursivis-llm-agent",
+    [string]$ImageName = "cursivis-llm-agent",
     [string]$GoogleApiKey,
     [switch]$UseSecretManager,
     [string]$SecretName = "cursivis-google-api-key",
@@ -43,7 +43,7 @@ $root = Split-Path -Parent $PSScriptRoot
 $imageUri = "gcr.io/$ProjectId/$ImageName"
 $serviceUrl = ""
 
-Write-Host "Deploying Cursivis Gemini backend to Google Cloud Run..."
+Write-Host "Deploying the Cursivis reasoning backend to Google Cloud Run..."
 Write-Host "Project: $ProjectId"
 Write-Host "Region: $Region"
 Write-Host "Service: $ServiceName"
@@ -92,7 +92,7 @@ try {
     Invoke-GCloud -Arguments @(
         "builds", "submit",
         "--tag", $imageUri,
-        "-f", "backend/gemini-agent/Dockerfile",
+        "-f", "backend/llm-agent/Dockerfile",
         "."
     )
 }

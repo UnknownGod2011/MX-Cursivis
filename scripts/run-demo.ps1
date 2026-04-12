@@ -24,7 +24,7 @@ if ($Help) {
 }
 
 $root = Split-Path -Parent $PSScriptRoot
-$backendDir = Join-Path $root "backend\gemini-agent"
+$backendDir = Join-Path $root "backend\llm-agent"
 $browserAgentDir = Join-Path $root "desktop\browser-action-agent"
 $extensionBridgeDir = Join-Path $root "desktop\browser-native-host"
 $extensionBridgeLauncher = Join-Path $extensionBridgeDir "launch.cmd"
@@ -95,7 +95,7 @@ $rotationKeys = @(
 )
 
 if ($rotationKeys.Count -eq 0) {
-    Write-Warning "GOOGLE_API_KEY is not set in this terminal. Backend Gemini calls will fail."
+    Write-Warning "GOOGLE_API_KEY is not set in this terminal. Backend requests will fail."
 }
 
 $effectiveApiKey = if ($rotationKeys.Count -gt 0) { $rotationKeys[0] } else { "" }

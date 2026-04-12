@@ -203,7 +203,7 @@
                                        Style="{StaticResource SubtleTextStyle}"
                                        FontSize="12"
                                        TextWrapping="Wrap"
-                                       Text="Smart Mode lets Gemini decide. Guided Mode opens staged options." />
+                                       Text="Smart Mode lets Cursivis decide. Guided Mode opens staged options." />
                             <ComboBox x:Name="ModeCombo"
                                       Width="244"
                                       Style="{StaticResource GlassComboBoxStyle}"

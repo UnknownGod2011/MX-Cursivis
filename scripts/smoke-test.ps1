@@ -72,7 +72,7 @@ catch {
     }
 
     if ($statusCode -eq 429) {
-        Write-Warning "Analyze is rate-limited (429). Backend is healthy, but Gemini quota is temporarily exhausted."
+        Write-Warning "Analyze is rate-limited (429). Backend is healthy, but the configured provider quota is temporarily exhausted."
         if ($bodyText) {
             Write-Host "Details: $bodyText"
         }

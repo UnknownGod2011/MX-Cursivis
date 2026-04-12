@@ -3,15 +3,15 @@
   <desc id="desc">High-level architecture of the Cursivis multimodal cursor-native agent system.</desc>
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#07111f"/>
-      <stop offset="100%" stop-color="#0f1727"/>
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
     <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#122238"/>
-      <stop offset="100%" stop-color="#0d1828"/>
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="0%" stop-color="#38bdf8"/>
       <stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -26,11 +26,11 @@
       .section { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
       .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
       .body { font: 15px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
-      .small { font: 14px 'Segoe UI', Arial, sans-serif; fill: #93c5fd; }
-      .box { fill: url(#panel); stroke: #22324d; stroke-width: 2; rx: 24; ry: 24; filter: url(#shadow); }
-      .pill { fill: #0b1320; stroke: #30415f; stroke-width: 1.5; rx: 999; ry: 999; }
+      .small { font: 14px 'Segoe UI', Arial, sans-serif; fill: #7dd3fc; }
+      .box { fill: url(#panel); stroke: #1e3a5f; stroke-width: 2; rx: 24; ry: 24; filter: url(#shadow); }
+      .pill { fill: #09101b; stroke: #24415f; stroke-width: 1.5; rx: 999; ry: 999; }
       .line { stroke: #67e8f9; stroke-width: 4; fill: none; marker-end: url(#arrow); }
-      .line-soft { stroke: #a78bfa; stroke-width: 3; fill: none; marker-end: url(#arrow); opacity: 0.9; }
+      .line-soft { stroke: #38bdf8; stroke-width: 3; fill: none; marker-end: url(#arrow); opacity: 0.85; }
     </style>
   </defs>
 
@@ -38,10 +38,10 @@
   <rect x="34" y="30" width="1532" height="860" rx="32" ry="32" fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.55"/>
 
   <text x="70" y="88" class="title">Cursivis Architecture</text>
-  <text x="70" y="122" class="subtitle">Selection = Context, Trigger = Intent, Gemini = Intelligence</text>
+  <text x="70" y="122" class="subtitle">Selection = Context, Trigger = Intent, Cursivis = Action</text>
 
   <rect x="70" y="165" width="330" height="250" class="box"/>
-  <text x="100" y="208" class="section">User Input Surface</text>
+  <text x="100" y="208" class="section">Input Layer</text>
   <rect x="98" y="230" width="272" height="42" class="pill"/>
   <text x="118" y="257" class="label">MX Creative Console / Trigger</text>
   <rect x="98" y="286" width="272" height="42" class="pill"/>
@@ -51,28 +51,28 @@
   <text x="100" y="398" class="body">Optional voice input, screenshots, and image-only flows all start here.</text>
 
   <rect x="470" y="165" width="420" height="340" class="box"/>
-  <text x="500" y="208" class="section">Windows Companion App</text>
+  <text x="500" y="208" class="section">Companion Orchestration Layer</text>
   <text x="500" y="244" class="label">WPF desktop orchestrator</text>
   <text x="500" y="276" class="body">- Captures text, lasso region, and fallback screen context</text>
   <text x="500" y="304" class="body">- Shows orb, result panel, guided menu, and voice UI</text>
-  <text x="500" y="332" class="body">- Sends multimodal requests to Gemini backend</text>
+  <text x="500" y="332" class="body">- Sends multimodal requests to the reasoning backend</text>
   <text x="500" y="360" class="body">- Applies safe insert/replace flows locally</text>
   <text x="500" y="388" class="body">- Invokes Take Action only after user confirmation</text>
   <text x="500" y="434" class="small">desktop/cursivis-companion</text>
 
   <rect x="960" y="165" width="500" height="340" class="box"/>
-  <text x="990" y="208" class="section">Gemini Backend on Google Cloud</text>
-  <text x="990" y="244" class="label">Node.js service on Cloud Run</text>
-  <text x="990" y="276" class="body">- Smart-mode contextual reasoning with Gemini</text>
+  <text x="990" y="208" class="section">Reasoning Layer</text>
+  <text x="990" y="244" class="label">Node.js service with provider-backed model routing</text>
+  <text x="990" y="276" class="body">- Smart-mode contextual reasoning</text>
   <text x="990" y="304" class="body">- Guided-mode dynamic option generation</text>
   <text x="990" y="332" class="body">- Image + text multimodal understanding</text>
   <text x="990" y="360" class="body">- Voice transcription and live interaction support</text>
   <text x="990" y="388" class="body">- Browser action planning for forms, email, and UI tasks</text>
   <text x="990" y="416" class="body">- Health endpoint and deployable Docker image</text>
-  <text x="990" y="462" class="small">backend/gemini-agent + Google GenAI SDK + Cloud Run</text>
+  <text x="990" y="462" class="small">backend/llm-agent + provider SDK + optional hosted runtime</text>
 
   <rect x="70" y="555" width="500" height="250" class="box"/>
-  <text x="100" y="598" class="section">Current Browser Execution Layer</text>
+  <text x="100" y="598" class="section">Live Browser Execution Layer</text>
   <text x="100" y="634" class="label">Chromium extension + localhost bridge</text>
   <text x="100" y="666" class="body">- Runs inside the user's real logged-in browser tab</text>
   <text x="100" y="694" class="body">- Reads DOM context and executes planned UI actions</text>
@@ -100,7 +100,7 @@
   <path d="M670 390 C440 520 360 555 320 555" class="line-soft"/>
   <path d="M1030 390 C990 520 950 555 900 555" class="line-soft"/>
 
-  <rect x="1290" y="76" width="214" height="36" rx="18" ry="18" fill="#08111d" stroke="#21405f" stroke-width="1.5"/>
+  <rect x="1290" y="76" width="214" height="36" rx="18" ry="18" fill="#050b14" stroke="#1d4f73" stroke-width="1.5"/>
   <circle cx="1317" cy="94" r="6" fill="#67e8f9"/>
-  <text x="1332" y="100" class="body">Judge-friendly deployment target</text>
+  <text x="1332" y="100" class="body">Optional hosted backend target</text>
 </svg>

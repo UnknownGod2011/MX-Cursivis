@@ -26,9 +26,7 @@ It now also subscribes to companion haptic events over:
 
 - `ws://127.0.0.1:48712/cursivis-haptics/`
 
-and prints/beeps haptic mappings for demo feedback.
-
-This enables full trigger-path testing now, before binding to the official Logi Actions SDK plugin package.
+This keeps trigger and haptic validation aligned with the same local runtime used by the companion app and the packaged plugin.
 
 `src/CursivisPlugin` is generated with `LogiPluginTool` and contains a real Logi Actions SDK C# plugin project with Cursivis actions:
 
@@ -42,7 +40,7 @@ These actions forward events to `ws://127.0.0.1:48711/cursivis-trigger/`.
 
 ## Current readiness
 
-The real Logitech plugin path is now working on a machine with Logi Options+ installed:
+The Logitech plugin path is working end-to-end on a machine with Logi Options+ installed:
 
 - `src/CursivisPlugin` builds against the current Logi Actions SDK runtime
 - the Debug/Release build hot-loads into Logi Plugin Service through the generated `.link` file
@@ -50,11 +48,13 @@ The real Logitech plugin path is now working on a machine with Logi Options+ ins
 - companion haptic events are translated into Logitech plugin events
 - the plugin packages and verifies successfully as `Cursivis.lplug4`
 
-What still needs real MX hardware later:
+## Hardware validation notes
+
+The packaged plugin is ready to install today. Final tactile and ergonomic refinement remains device-specific and benefits from real supported MX hardware:
 
 - Actions Ring ergonomics validation
 - MX-specific haptic feel validation
-- final physical profile tuning for MX Creative Console / supported MX devices
+- final profile tuning for MX Creative Console / supported MX devices
 
 ## Real plugin build / package workflow
 
@@ -90,13 +90,13 @@ Useful runtime paths:
 - debug `.link` file:
   - `%LOCALAPPDATA%\Logi\LogiPluginService\Plugins\CursivisPlugin.link`
 
-## Planned default Logitech UX
+## Default Logitech UX
 
 The current hardware-ready control design is documented in:
 
 - `plugin/logitech-plugin/CONTROL_MAP.md`
 
-This gives us a stable target for MX Creative Console and Actions Ring behavior before the real devices arrive.
+This gives the project a clear, hardware-native interaction model for MX Creative Console, MX Master 4, and Actions Ring.
 
 Current reference interaction goals:
 
@@ -131,7 +131,7 @@ Logi SDK plugin project path:
 
 Build this project on a machine with Logi Plugin Service installed (for `PluginApi.dll` reference).
 
-## Virtual validation before hardware
+## Virtual validation path
 
 Without MX hardware, the most useful validation path is:
 
@@ -149,5 +149,4 @@ powershell -ExecutionPolicy Bypass -File .\scripts\send-logitech-trigger.ps1 -Pr
 
 Note:
 
-- an old Logitech M170 is not a meaningful Actions Ring validation device
-- final MX mouse / MX Creative Console validation still needs supported hardware
+- use supported MX hardware for final Actions Ring and haptic-feel validation

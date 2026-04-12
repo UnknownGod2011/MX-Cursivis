@@ -60,6 +60,14 @@ This project is built around one core idea:
   </tr>
 </table>
 
+## Installable Logitech Package
+
+For reviewers who want the packaged Logitech plugin directly, the repository already includes:
+
+- [`plugin/logitech-plugin/dist/Cursivis.lplug4`](./plugin/logitech-plugin/dist/Cursivis.lplug4)
+
+The packaged `.lplug4` file is included for direct review and distribution. On a clean machine, the supported install flow is the scripted plugin install in Step 6 below, because it also verifies the package against the local Logi Plugin Service environment.
+
 ## Workflow At A Glance
 
 ```mermaid
@@ -190,7 +198,7 @@ flowchart TB
   - Windows companion app, orb, AI box, selection capture, guided flow, voice flow, result handling
 - `plugin/logitech-plugin`
   - Logitech plugin, Actions Ring integration, trigger bridge, haptics
-- `backend/gemini-agent`
+- `backend/llm-agent`
   - reasoning layer and browser action planning
 - `desktop/browser-extension-chromium`
   - current-tab browser execution
@@ -313,8 +321,9 @@ That combination is what makes the project distinctive.
 Important notes:
 
 - the product is **not** tied conceptually to one model vendor
-- the current repository ships with a default provider-backed reasoning implementation under `backend/gemini-agent`
+- the current repository ships with a default provider-backed reasoning implementation under `backend/llm-agent`
 - the Cursivis interaction model remains modular and backend-agnostic
+- a single API key is enough to run the stack, and the runtime also supports an optional fallback key pool for uninterrupted sessions
 
 ## Getting Started
 
@@ -334,8 +343,8 @@ Install:
 ### 2. Clone the repository
 
 ```powershell
-git clone https://github.com/UnknownGod2011/Cursivis-logitech-f1.git
-cd Cursivis-logitech-f1
+git clone https://github.com/UnknownGod2011/MX-Cursivis.git
+cd MX-Cursivis
 ```
 
 If you are working from a downloaded ZIP instead of `git clone`, just open the extracted folder and use the same commands from that directory.
@@ -391,6 +400,17 @@ Steps:
 This is what lets Cursivis work inside the browser tab you are already logged into.
 
 ### 6. Build and install the Logitech plugin
+
+A prebuilt Logitech package is already included here if you want the packaged artifact directly:
+
+- [`plugin/logitech-plugin/dist/Cursivis.lplug4`](./plugin/logitech-plugin/dist/Cursivis.lplug4)
+
+If you are reviewing the packaged plugin on another Windows machine, keep these prerequisites in place first:
+
+- Logi Options+
+- the Chromium extension loaded from `desktop/browser-extension-chromium`
+- the local runtime started with `scripts/run-demo.ps1`
+- the MX trigger hotkey mapped to `Ctrl + Alt + Space`
 
 From the repo root:
 
@@ -498,11 +518,13 @@ Open this repository and start the full local Cursivis stack. Use scripts/run-de
 If you want to review the project quickly, start here:
 
 - [README.md](./README.md)
+- [plugin/logitech-plugin/dist/Cursivis.lplug4](./plugin/logitech-plugin/dist/Cursivis.lplug4)
 - [plugin/logitech-plugin/CONTROL_MAP.md](./plugin/logitech-plugin/CONTROL_MAP.md)
 - [plugin/logitech-plugin/README.md](./plugin/logitech-plugin/README.md)
 - [desktop/cursivis-companion/README.md](./desktop/cursivis-companion/README.md)
 - [desktop/browser-extension-chromium/README.md](./desktop/browser-extension-chromium/README.md)
-- [docs/DEMO_SCENARIOS.md](./docs/DEMO_SCENARIOS.md)
+- [docs/BUILD_NARRATIVE.md](./docs/BUILD_NARRATIVE.md)
+- [docs/ARCHITECTURE_DIAGRAM.md](./docs/ARCHITECTURE_DIAGRAM.md)
 - [ARCHITECTURE_PLAN.md](./ARCHITECTURE_PLAN.md)
 
 ## Current Status

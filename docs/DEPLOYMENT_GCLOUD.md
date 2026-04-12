@@ -13,7 +13,7 @@ It is **not** the core product story. The main story is Logitech-native workflow
 
 ## What This Deploys
 
-- `backend/gemini-agent`
+- `backend/llm-agent`
 
 ## Important
 
@@ -27,7 +27,7 @@ Default local behavior:
 ## Fast Deployment Script
 
 ```powershell
-Set-Location -LiteralPath "C:\Users\Admin\OneDrive\Desktop\Cursivis! - Copy\cursivis"
+Set-Location -LiteralPath "C:\Path\To\MX-Cursivis"
 
 powershell -ExecutionPolicy Bypass -File .\scripts\deploy-cloudrun.ps1 `
   -ProjectId "YOUR_PROJECT_ID" `
@@ -42,10 +42,10 @@ powershell -ExecutionPolicy Bypass -File .\scripts\deploy-cloudrun.ps1 `
 gcloud config set project YOUR_PROJECT_ID
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com secretmanager.googleapis.com
 
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/cursivis-gemini-agent -f backend/gemini-agent/Dockerfile .
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/cursivis-backend -f backend/llm-agent/Dockerfile .
 
-gcloud run deploy cursivis-gemini-agent `
-  --image gcr.io/YOUR_PROJECT_ID/cursivis-gemini-agent `
+gcloud run deploy cursivis-backend `
+  --image gcr.io/YOUR_PROJECT_ID/cursivis-backend `
   --region us-central1 `
   --platform managed `
   --allow-unauthenticated `
@@ -61,7 +61,7 @@ curl https://YOUR_CLOUD_RUN_URL/health
 Expected:
 
 ```json
-{"ok":true,"service":"gemini-agent","ts":"..."}
+{"ok":true,"service":"cursivis-backend","ts":"..."}
 ```
 
 ## Run The Companion Against The Cloud Backend

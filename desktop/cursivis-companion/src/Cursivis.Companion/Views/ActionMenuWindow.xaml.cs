@@ -15,7 +15,7 @@ public partial class ActionMenuWindow : Window
     {
         InitializeComponent();
         HeaderText.Text = $"Suggested actions for {contentType.Replace('_', ' ')}";
-        SubtitleText.Text = "Quick actions are ready now. Gemini is also generating a few smarter context-aware options.";
+        SubtitleText.Text = "Quick actions are ready now. Cursivis is also generating a few smarter context-aware options.";
         _deferredActions = deferredActions;
 
         foreach (var action in initialActions)
@@ -44,7 +44,7 @@ public partial class ActionMenuWindow : Window
         }
 
         ThinkingPanel.Visibility = Visibility.Visible;
-        ThinkingText.Text = "Gemini is thinking...";
+        ThinkingText.Text = "Cursivis is thinking...";
         ThinkingSubtext.Text = "Generating 3-4 smarter, context-aware options for this selection.";
 
         try
@@ -72,7 +72,7 @@ public partial class ActionMenuWindow : Window
         }
 
         ThinkingText.Text = "Context-aware options ready";
-        ThinkingSubtext.Text = "You can keep a quick action, choose one of the new Gemini options, or use custom voice.";
+        ThinkingSubtext.Text = "You can keep a quick action, choose one of the new context-aware options, or use custom voice.";
         await Task.Delay(900);
         ThinkingPanel.Visibility = Visibility.Collapsed;
     }
@@ -133,7 +133,7 @@ public partial class ActionMenuWindow : Window
 
         if (action.StartsWith("... (AI Suggest:", StringComparison.OrdinalIgnoreCase))
         {
-            return "This is Gemini's current best guess for the most useful next action.";
+            return "This is the current best guess for the most useful next action.";
         }
 
         return isContextual

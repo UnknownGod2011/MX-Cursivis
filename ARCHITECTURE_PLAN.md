@@ -93,7 +93,7 @@ Role:
 
 This is the main orchestration layer of the system.
 
-### Reasoning Backend (`backend/gemini-agent`)
+### Reasoning Backend (`backend/llm-agent`)
 
 Runtime:
 

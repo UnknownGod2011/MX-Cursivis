@@ -222,7 +222,7 @@ public partial class MainWindow : Window
         var apiKey = ApiKeyTextBox.Text?.Trim() ?? string.Empty;
         if (string.IsNullOrWhiteSpace(apiKey))
         {
-            StatusText.Text = "Status: Enter a Gemini API key before pressing Set.";
+            StatusText.Text = "Status: Enter a valid API key before pressing Set.";
             return;
         }
 
@@ -236,12 +236,12 @@ public partial class MainWindow : Window
             await _runtimeGeminiClient.UpdateRuntimeApiKeyAsync(apiKey, CancellationToken.None);
             var saved = await _runtimeLaunchProfileService.UpdateApiKeysAsync(apiKey);
             StatusText.Text = saved
-                ? "Status: Gemini API key updated for this session and future restarts."
-                : "Status: Gemini API key updated for this session.";
+                ? "Status: API key updated for this session and future restarts."
+                : "Status: API key updated for this session.";
         }
         catch (Exception ex)
         {
-            StatusText.Text = $"Status: Failed to update Gemini API key. {ex.Message}";
+            StatusText.Text = $"Status: Failed to update the API key. {ex.Message}";
         }
         finally
         {

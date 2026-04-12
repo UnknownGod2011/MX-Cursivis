@@ -46,7 +46,7 @@
                                Margin="0,4,0,0"
                                Style="{StaticResource SubtleTextStyle}"
                                FontSize="12"
-                               Text="Quick actions appear immediately. Gemini then adds smarter, context-aware options." />
+                               Text="Quick actions appear immediately. Cursivis then adds smarter, context-aware options." />
                 </StackPanel>
             </Border>
 
@@ -93,7 +93,7 @@
                     <TextBlock x:Name="ThinkingText"
                                Style="{StaticResource HeadlineTextStyle}"
                                FontSize="12"
-                               Text="Gemini is thinking..." />
+                               Text="Cursivis is thinking..." />
                     <TextBlock x:Name="ThinkingSubtext"
                                Margin="0,4,0,0"
                                Style="{StaticResource SubtleTextStyle}"

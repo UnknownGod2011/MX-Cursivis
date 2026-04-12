@@ -12,7 +12,7 @@ if ($Help) {
 }
 
 $patterns = @(
-    "backend\gemini-agent\src\server.js",
+    "backend\llm-agent\src\server.js",
     "node src/server.js",
     "cmd.exe /d /s /c node src/server.js",
     "desktop\browser-action-agent\src\server.js",

@@ -230,7 +230,7 @@ public sealed class GeminiClient : IDisposable
 
         if (string.IsNullOrWhiteSpace(normalized))
         {
-            throw new InvalidOperationException("Enter a valid Gemini API key before pressing Set.");
+            throw new InvalidOperationException("Enter a valid API key before pressing Set.");
         }
 
         var response = await _httpClient.PostAsJsonAsync(
@@ -765,7 +765,7 @@ public sealed class GeminiClient : IDisposable
                 if ((int)statusCode == 429)
                 {
                     var retry = parsed.RetryAfterSec ?? 30;
-                    return $"Gemini quota/rate limit reached for the current API key or project. Retry after about {retry} seconds, or switch to a different key/project with available quota.";
+                    return $"The current backend provider hit a quota or rate limit. Retry after about {retry} seconds, or switch to a different key or project with available quota.";
                 }
 
                 return message;

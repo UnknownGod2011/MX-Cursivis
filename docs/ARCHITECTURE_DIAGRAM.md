@@ -13,7 +13,7 @@ The diagram is now meant to communicate the Logitech product story clearly:
 - MX Creative Console, MX Master 4, and Actions Ring as the control layer
 - the Windows companion as the orchestration layer
 - Cursivis orb + result UI as the interaction layer
-- the AI backend as the reasoning layer
+- the reasoning backend as the intelligence layer
 - real-browser and managed-browser action paths as the execution layer
 
 The intended reading of the system is:
@@ -25,4 +25,4 @@ The intended reading of the system is:
 5. Cursivis returns the result
 6. `Take Action` executes the workflow in the browser when appropriate
 
-This diagram should be used to present Cursivis as a Logitech ecosystem product and premium workflow concept.
+This diagram should be used to present Cursivis as a Logitech ecosystem product with a modular, provider-agnostic runtime behind it.
