@@ -529,7 +529,7 @@ If you are using an IDE with an AI coding assistant, you can paste this prompt t
 Open this repository and start the full local Cursivis stack. Use scripts/run-demo.ps1 with the Logitech bridge enabled, keep the companion in background mode, and verify that the backend, browser action agent, extension bridge, and hotkey host are healthy. Then guide me through loading the Chromium extension, building/installing the Logitech plugin, setting up the Cursivis Actions Ring folder, and confirming that Trigger, Talk, Snip-it, and Take Action all work.
 ```
 
-## Repository Guide For Judges
+## Repository Guide
 
 If you want to review the project quickly, start here:
 
