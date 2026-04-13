@@ -412,7 +412,9 @@ If you are reviewing the packaged plugin on another Windows machine, keep these 
 - Logi Options+
 - the Chromium extension loaded from `desktop/browser-extension-chromium`
 - the local runtime started with `scripts/run-demo.ps1`
-- the MX trigger hotkey mapped to `Ctrl + Alt + Space`
+- one programmable MX button mapped to the Cursivis trigger hotkey `Ctrl + Alt + Space` for the dedicated button-trigger path
+
+The keyboard shortcut is the backing signal for that mapped mouse-button trigger. Actions Ring entries can invoke Cursivis directly through the plugin once installed, without depending on the user pressing the shortcut itself.
 
 Fastest supported setup on another Windows machine:
 
@@ -467,11 +469,11 @@ Recommended nested layout:
 
 ### 8. Configure the MX Master 4 trigger
 
-For the fastest interaction, map a programmable mouse button to the Cursivis trigger hotkey:
+For the fastest dedicated mouse-button trigger path, map a programmable MX button to the Cursivis trigger hotkey:
 
 - `Ctrl + Alt + Space`
 
-This works with the always-on hotkey host so Cursivis can wake and respond even if the companion is not already open.
+This hotkey acts as the backing signal for that mapped button, so the always-on hotkey host can wake and respond even if the companion is not already open. If you launch Cursivis from the Actions Ring, that plugin path works directly and does not require the user to rely on the keyboard shortcut itself.
 
 Recommended Logitech hardware behavior:
 
