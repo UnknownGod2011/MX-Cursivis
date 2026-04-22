@@ -2,6 +2,7 @@ using Cursivis.Companion.Controllers;
 using Cursivis.Companion.Infrastructure;
 using Cursivis.Companion.Models;
 using Cursivis.Companion.Services;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
@@ -38,6 +39,7 @@ public partial class MainWindow : Window
     private bool _playHapticSound;
     private bool _isUpdatingThemeSelection;
     private bool _isUpdatingApiKey;
+    private bool _allowWindowClose;
 
     public MainWindow(TriggerController triggerController, SettingsService settingsService, CompanionSettings initialSettings)
     {
@@ -81,6 +83,7 @@ public partial class MainWindow : Window
         RefreshLogitechRuntimeStatus();
         _logitechStatusTimer.Start();
         SourceInitialized += MainWindow_OnSourceInitialized;
+        Closing += MainWindow_OnClosing;
         Deactivated += (_, _) =>
         {
             if (IsVisible)
@@ -95,6 +98,7 @@ public partial class MainWindow : Window
     protected override void OnClosed(EventArgs e)
     {
         CancelLongPressSession();
+        Closing -= MainWindow_OnClosing;
         UnregisterHotkeys();
         if (_hwndSource is not null)
         {
@@ -209,6 +213,7 @@ public partial class MainWindow : Window
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)
     {
+        _allowWindowClose = true;
         Application.Current.Shutdown();
     }
 
@@ -703,6 +708,17 @@ public partial class MainWindow : Window
             ApiKeyTextBox.Focus();
             ResetApiKeyViewport();
         }, DispatcherPriority.Input);
+    }
+
+    private void MainWindow_OnClosing(object? sender, CancelEventArgs e)
+    {
+        if (_allowWindowClose)
+        {
+            return;
+        }
+
+        e.Cancel = true;
+        Hide();
     }
 
     private void ApiKeyTextBox_OnPaste(object sender, DataObjectPastingEventArgs e)

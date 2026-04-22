@@ -307,6 +307,12 @@ public sealed class TriggerController : IDisposable
             return;
         }
 
+        if (!_orbOverlayWindow.IsVisible)
+        {
+            NativeMethods.SendVolumeStep(delta);
+            return;
+        }
+
         _orbOverlayWindow.NavigateIdleCommand(delta);
         OnActionChange?.Invoke(this, _orbOverlayWindow.CurrentIdleCommand);
     }

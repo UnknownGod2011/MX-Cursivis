@@ -24,6 +24,8 @@ public static class NativeMethods
     private const byte VkTab = 0x09;
     private const byte VkT = 0x54;
     private const byte VkV = 0x56;
+    private const byte VkVolumeDown = 0xAE;
+    private const byte VkVolumeUp = 0xAF;
     private const byte VkZ = 0x5A;
 
     [DllImport("user32.dll")]
@@ -324,6 +326,16 @@ public static class NativeMethods
     {
         keybd_event(key, 0, 0, UIntPtr.Zero);
         keybd_event(key, 0, KeyeventfKeyup, UIntPtr.Zero);
+    }
+
+    public static void SendVolumeStep(int delta)
+    {
+        if (delta == 0)
+        {
+            return;
+        }
+
+        SendKey(delta > 0 ? VkVolumeUp : VkVolumeDown);
     }
 
     [StructLayout(LayoutKind.Sequential)]
